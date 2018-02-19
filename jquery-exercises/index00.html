@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="css/main.css" rel="stylesheet" />
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <title>Replace Me Ajax jQuery Exercise</title>
+    <script>
+    $('.btn').click(function() {
+
+      $('.text').text('loading . . .');
+      $.ajax({
+        type:"GET",
+        data: {
+          q: "puppy",
+          restrict_sr: "true"
+        },
+        url:"http://www.reddit.com/r/aww/search.json",
+        success: function(response) {
+          $('.text').html('');
+          var children = response.data.children;
+          for (var i = 0; i < children.length; i++) {
+            if (children[i].data.thumbnail !== "self" && children[i].data.thumbnail !== "default") {
+              $('.text').append('<img src="' + children[i].data.thumbnail + '" />');
+            }
+          }
+        },
+      }); 
+    });
+  </script>
+  </head>
+<body>
+  <button type="button" class="btn">Click me!</button>
+  <div class="text">Replace me!!</div>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  </body>
+</html>
