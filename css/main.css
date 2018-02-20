@@ -7,6 +7,11 @@ body {
   background-color: lightgray;
   margin: 0;
 }
+#main {
+  margin: 0 auto;
+  width:  80%;
+  border: 1px black dashed;
+}
 img {
   border: 0px;
   margin: 10px;
